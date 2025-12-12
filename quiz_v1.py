@@ -19,26 +19,35 @@ questions = [
   },
 ]
 
-score = 0 # initialize score and keep track of correct answers
+while True: # adding this to allow retaking the quiz
 
-# 2nd Loop thru each question
-for q in questions:
-  print(q["question"])
-  user_answer = input("Your answer: ")
+  score = 0 # initialize score and keep track of correct answers
 
-  # 3rd normalize input (lowercase and strip spaces)
-  normalized_user_answer = user_answer.strip().lower()
-  normalized_correct_answer = q["answer"].strip().lower()
+  # 2nd Loop thru each question
+  for q in questions:
+    print(q["question"])
+    user_answer = input("Your answer: ")
 
-  if normalized_user_answer == normalized_correct_answer:
-    print(" ✅ Correct!\n")
-    score += 1
-  else:
-    print(f" ❌ Incorrect! The correct answer is: {q['answer']}\n")
+    # 3rd normalize input (lowercase and strip spaces)
+    normalized_user_answer = user_answer.strip().lower()
+    normalized_correct_answer = q["answer"].strip().lower()
 
-# 4th Final score display
-print("Quiz Complete!")
-print(f"You scored {score} out of {len(questions)}.")
+    # == means exact match changed to "in" which means is this contained inside
+    if normalized_user_answer in normalized_correct_answer:
+      print(" ✅ Correct!\n")
+      score += 1
+    else:
+      print(f" ❌ Incorrect! The correct answer is: {q['answer']}\n")
 
-percentage = (score / len(questions)) * 100
-print(f"That's {percentage:.2f}%")
+  # 4th Final score display
+  print("Quiz Complete!")
+  print(f"You scored {score} out of {len(questions)}.")
+
+  percentage = (score / len(questions)) * 100
+  print(f"That's {percentage:.2f}%")
+
+  # Ask if the user wants to retake the quiz
+  play_again = input("\nDo you want to retake the game? (y/n): ").strip().lower()
+  if play_again != 'y':
+    print("Mahalo for playing and studying! Kitakits!")
+    break
