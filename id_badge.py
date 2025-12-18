@@ -1,6 +1,10 @@
 # simple id badge generator
+"""
+Author: Joseph Almeria
+Purpose: Practice with string methods by creating a simple ID badge generator.
+"""
 
-print("Please enter the following information to generate your ID badge.")
+print("Please enter the following information to generate your ID badge.\n")
 
 first_name = input("First Name: ")
 last_name = input("Last Name: ")
@@ -11,7 +15,7 @@ id_number = input("ID Number: ")
 
 print("\nThe ID Card is:")
 print("----------------------------------------")
-print(f"{last_name.upper().strip()}, {first_name.title().strip()}")
+print(f"{last_name.upper().strip()}, {first_name.capitalize().strip()}")
 print(f"{job_title.title().strip()}")
 print(f"ID: {id_number.strip()}\n")
 print(f"{email.lower().strip()}")
